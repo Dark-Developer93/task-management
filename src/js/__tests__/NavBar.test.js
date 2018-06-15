@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import NavBar from '../components/presentational/NavBar';
+import NavBar from '../components/NavBar';
 
 const wrapper = shallow(<NavBar />);
 

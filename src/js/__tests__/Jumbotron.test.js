@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import Jumbotron from '../components/presentational/Jumbotron';
+import Jumbotron from '../components/Jumbotron';
 
 const wrapper = shallow(<Jumbotron>Sample Header</Jumbotron>);
 

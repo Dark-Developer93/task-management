@@ -1,7 +1,7 @@
 import React from 'react';
 import { HashRouter } from 'react-router-dom';
 
-import NavBar from '../presentational/NavBar';
+import NavBar from './NavBar';
 import MainRoutes from './MainRoutes';
 
 const MainLayout = () => (

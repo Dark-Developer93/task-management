@@ -1,7 +1,7 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 
-import NavItem from '../components/presentational/NavItem';
+import NavItem from '../components/NavItem';
 
 const wrapper = shallow(<NavItem path="/test-path" label="Test Label" />);
 

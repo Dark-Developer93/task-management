@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Jumbotron from './presentational/Jumbotron';
-import MainLayout from './layout/MainLayout';
+import Jumbotron from './Jumbotron';
+import MainLayout from './MainLayout';
 
 const App = () => (
   <div id="mainContainer">

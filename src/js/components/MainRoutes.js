@@ -1,9 +1,9 @@
 import React from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
-import HomePage from '../pages/HomePage';
-import TaskPage from '../pages/TaskPage';
-import ReportPage from '../pages/ReportPage';
+import HomePage from './HomePage';
+import TaskPage from './TaskPage';
+import ReportPage from './ReportPage';
 
 const MainRoutes = () => (
   <Switch>

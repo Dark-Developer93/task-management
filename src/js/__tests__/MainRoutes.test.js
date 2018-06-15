@@ -2,22 +2,22 @@ import React from 'react';
 import { mount } from 'enzyme';
 import { MemoryRouter } from 'react-router';
 
-import MainRoutes from '../components/layout/MainRoutes';
-import HomePage from '../components/pages/HomePage';
-import TaskPage from '../components/pages/TaskPage';
-import ReportPage from '../components/pages/ReportPage';
+import MainRoutes from '../components/MainRoutes';
+import HomePage from '../components/HomePage';
+import TaskPage from '../components/TaskPage';
+import ReportPage from '../components/ReportPage';
 
-jest.mock('../components/pages/HomePage', () => {
+jest.mock('../components/HomePage', () => {
   const HomePage = () => <div />;
   return HomePage;
 });
 
-jest.mock('../components/pages/TaskPage', () => {
+jest.mock('../components/TaskPage', () => {
   const TaskPage = () => <div />;
   return TaskPage;
 });
 
-jest.mock('../components/pages/ReportPage', () => {
+jest.mock('../components/ReportPage', () => {
   const ReportPage = () => <div />;
   return ReportPage;
 });
