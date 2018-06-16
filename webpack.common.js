@@ -1,6 +1,8 @@
 const path = require('path');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devMode = process.env.NODE_ENV !== 'production';
 
 module.exports = {
   entry: './src/js/index.js',
@@ -16,14 +18,22 @@ module.exports = {
         exclude: /node_modules/
       },
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
+        test: /\.(sa|sc|c)ss$/,
+        use: [
+          devMode ? 'style-loader' : MiniCssExtractPlugin.loader,
+          'css-loader',
+          'sass-loader'
+        ],
         exclude: /node_modules/
       }
     ]
   },
   plugins: [
     new CleanWebpackPlugin(['dist']),
+    new MiniCssExtractPlugin({
+      filename: devMode ? '[name].css' : '[name].[hash].css',
+      chunkFilename: devMode ? '[id].css' : '[id].[hash].css'
+    }),
     new HtmlWebpackPlugin({
       template: './index.html',
       filename: './index.html'
