@@ -8,29 +8,27 @@ import { getDaysFromNow } from '../util/DateUtil';
 export class ReportPage extends Component {
   componentDidMount() {
     const data = this.groupTaskByCategory();
-    if (data) {
-      new Chart(this.canvasEl, {
-        type: 'polarArea',
-        data: {
-          labels: this.getTaskCategories(),
-          datasets: [
-            {
-              data,
-              backgroundColor: ['#E0E0E0', '#FFC400', '#00E676', '#FF6384'],
-              hoverBackgroundColor: ['#E0E0E0', '#FFC400', '#00E676', '#FF6384']
-            }
-          ]
+    new Chart(this.canvasEl, {
+      type: 'doughnut',
+      data: {
+        labels: this.getTaskCategories(),
+        datasets: [
+          {
+            data,
+            backgroundColor: ['#E0E0E0', '#FFC400', '#00E676', '#FF6384'],
+            hoverBackgroundColor: ['#E0E0E0', '#FFC400', '#00E676', '#FF6384']
+          }
+        ]
+      },
+      options: {
+        title: {
+          display: true,
+          text: 'Tasks due in 7 days'
         },
-        options: {
-          title: {
-            display: true,
-            text: 'Tasks due in 7 days'
-          },
-          animateScale: true,
-          animateRotate: true
-        }
-      });
-    }
+        animateScale: true,
+        animateRotate: true
+      }
+    });
   }
 
   getTaskCategories() {
@@ -61,7 +59,9 @@ export class ReportPage extends Component {
   }
 
   render() {
-    return <canvas ref={el => (this.canvasEl = el)} width={500} height={500} />;
+    return (
+      <canvas ref={el => (this.canvasEl = el)} />
+    );
   }
 }
 
