@@ -8,9 +8,8 @@ const App = () => (
     <Jumbotron>
       <h1>Task Manager</h1>
       <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque
-        nec nunc tempus sem gravida venenatis a in enim. Nullam a dapibus
-        turpis, auctor tristique leo.
+        Hassle free task management that allows all types of task to be created and monitor. Create and complete task 
+        with a single click of a button and monitor the upcoming and overdue task in our awesome chart view!
       </p>
     </Jumbotron>
     <MainLayout />
