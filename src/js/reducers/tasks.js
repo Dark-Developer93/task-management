@@ -26,7 +26,7 @@ const toggleTask = (task, taskId) => {
   return task;
 };
 
-const tasks = (state = [], action) => {
+const tasksReducer = (state = [], action) => {
   switch (action.type) {
     case ADD_TASK:
       return [...state, createTask(action.payload)];
@@ -37,4 +37,4 @@ const tasks = (state = [], action) => {
   }
 };
 
-export default tasks;
+export default tasksReducer;
