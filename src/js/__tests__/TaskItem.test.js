@@ -2,9 +2,9 @@ import React from 'react';
 import { mount } from 'enzyme';
 
 import { TaskItem } from '../components/TaskItem';
-import { addDays } from '../util/DateUtil';
+import { addDays, toDateString } from '../util/DateUtil';
 
-const now = new Date('2018-01-01').getTime();
+const now = '2018-01-01';
 Date.now = jest.fn().mockReturnValue(now);
 
 const setup = customProps => {
@@ -13,9 +13,9 @@ const setup = customProps => {
     name: 'some task',
     category: 'a category',
     description: 'lorem ipsum',
-    createdDate: Date.now(),
-    reminderDate: Date.now(),
-    dueDate: addDays(Date.now(), 4),
+    createdDate: now,
+    reminderDate: now,
+    dueDate: toDateString(addDays(now, 4)),
     resolved: false,
     dispatch: jest.fn(),
     ...customProps
@@ -39,13 +39,13 @@ describe('TaskItem component', () => {
     expect(wrapper).toMatchSnapshot();
   });
 
-  it('should render card with border-warning when task is almost due', () => {
-    const { wrapper } = setup({ dueDate: addDays(Date.now(), 3) });
+  it('should render card with border-warning when task is due in 3 days', () => {
+    const { wrapper } = setup({ dueDate: toDateString(addDays(now, 3)) });
     expect(wrapper.find('.card.border-warning')).toHaveLength(1);
   });
 
   it('should render card with border-danger when task is over due', () => {
-    const { wrapper } = setup({ dueDate: addDays(Date.now(), -1) });
+    const { wrapper } = setup({ dueDate: toDateString(addDays(now, -1)) });
     expect(wrapper.find('.card.border-danger')).toHaveLength(1);
   });
 
@@ -54,17 +54,10 @@ describe('TaskItem component', () => {
     expect(wrapper.find('.card.border-success')).toHaveLength(1);
   });
 
-  // it('should disable add task button when mandatory fields are empty', () => {
-  //   const { wrapper } = setup();
-  //   expect(wrapper.find('button').props().disabled).toBeTruthy();
-  // });
-
-  // it('shoud call addTask when form is submitted', () => {
-  //   const { wrapper, props } = setup();
-  //   expect(props.toggleTask.mock.calls).toHaveLength(0);
-  //   wrapper.find('button').simulate('submit');
-  //   expect(props.toggleTask.mock.calls).toHaveLength(1);
-  //   wrapper.find('form').simulate('submit');
-  //   expect(props.toggleTask.mock.calls).toHaveLength(2);
-  // });
+  it('shoud call dispatch when button is clicked', () => {
+    const { wrapper, props } = setup();
+    expect(props.dispatch.mock.calls).toHaveLength(0);
+    wrapper.find('button').simulate('click');
+    expect(props.dispatch.mock.calls).toHaveLength(1);
+  });
 });

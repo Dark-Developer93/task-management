@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 import { ADD_TASK, TOGGLE_TASK } from '../constants/action-types';
+import { toDateString } from '../util/DateUtil';
 
 const createTask = task => {
   return {
@@ -8,7 +9,7 @@ const createTask = task => {
     category: task.category,
     name: task.name,
     description: task.description,
-    createdDate: Date.now(),
+    createdDate: toDateString(Date.now()),
     reminderDate: task.reminderDate,
     dueDate: task.dueDate,
     resolved: false

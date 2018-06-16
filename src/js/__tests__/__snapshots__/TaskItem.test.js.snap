@@ -3,13 +3,13 @@
 exports[`TaskItem component should render correctly 1`] = `
 <TaskItem
   category="a category"
-  createdDate={1514764800000}
+  createdDate="2018-01-01"
   description="lorem ipsum"
   dispatch={[MockFunction]}
-  dueDate={1515110400000}
+  dueDate="2018-01-05"
   id="1"
   name="some task"
-  reminderDate={1514764800000}
+  reminderDate="2018-01-01"
   resolved={false}
 >
   <div

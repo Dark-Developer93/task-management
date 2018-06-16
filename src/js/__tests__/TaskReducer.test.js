@@ -7,7 +7,7 @@ jest.mock('uuid', () => {
   };
 });
 
-const now = Date.now();
+const now = '2018-01-01';
 Date.now = jest.fn().mockReturnValue(now);
 
 describe('Task reducer', () => {

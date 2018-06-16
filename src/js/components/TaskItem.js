@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
 import { toggleTask } from '../actions/tasks';
-import { getDaysFromNow, toDateString } from '../util/DateUtil';
+import { getDaysFromNow } from '../util/DateUtil';
 
 const isAlmostDue = dueDate => {
   const daysBetween = getDaysFromNow(dueDate);
@@ -36,11 +36,9 @@ export const TaskItem = ({
         <div className="card-header">{category}</div>
         <div className="card-body">
           <h5 className="card-title">{name}</h5>
-          <h6 className="card-subtitle mb-2 text-muted">
-            Due on {toDateString(dueDate)}
-          </h6>
+          <h6 className="card-subtitle mb-2 text-muted">Due on {dueDate}</h6>
           <p className="card-text">{description}</p>
-          <p className="card-text">Reminder {toDateString(reminderDate)}</p>
+          <p className="card-text">Reminder {reminderDate}</p>
         </div>
         <div className="card-footer">
           <button
@@ -54,9 +52,7 @@ export const TaskItem = ({
           >
             {!resolved ? 'Resolve' : 'Reopen'}
           </button>
-          <small className="text-muted">
-            Created on {toDateString(createdDate)}
-          </small>
+          <small className="text-muted">Created on {createdDate}</small>
         </div>
       </div>
     </div>
@@ -65,7 +61,7 @@ export const TaskItem = ({
 
 TaskItem.defaultProps = {
   description: '',
-  reminderDate: null
+  reminderDate: ''
 };
 
 TaskItem.propTypes = {
@@ -73,9 +69,9 @@ TaskItem.propTypes = {
   name: PropTypes.string.isRequired,
   category: PropTypes.string.isRequired,
   description: PropTypes.string,
-  createdDate: PropTypes.number.isRequired,
-  reminderDate: PropTypes.number,
-  dueDate: PropTypes.number.isRequired,
+  createdDate: PropTypes.string.isRequired,
+  reminderDate: PropTypes.string,
+  dueDate: PropTypes.string.isRequired,
   resolved: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 };
