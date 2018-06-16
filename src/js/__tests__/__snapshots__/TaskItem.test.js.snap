@@ -6,7 +6,7 @@ exports[`TaskItem component should render correctly 1`] = `
   createdDate="2018-01-01"
   description="lorem ipsum"
   dispatch={[MockFunction]}
-  dueDate="2018-01-05"
+  dueDate="2018-01-09"
   id="1"
   name="some task"
   reminderDate="2018-01-01"
@@ -35,22 +35,16 @@ exports[`TaskItem component should render correctly 1`] = `
           className="card-subtitle mb-2 text-muted"
         >
           Due on 
-          2018-01-05
+          2018-01-09
         </h6>
         <p
           className="card-text"
         >
           lorem ipsum
         </p>
-        <p
-          className="card-text"
-        >
-          Reminder 
-          2018-01-01
-        </p>
       </div>
       <div
-        className="card-footer"
+        className="card-footer text-center"
       >
         <button
           className="btn btn-block btn-primary"

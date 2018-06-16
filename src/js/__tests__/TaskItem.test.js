@@ -15,7 +15,7 @@ const setup = customProps => {
     description: 'lorem ipsum',
     createdDate: now,
     reminderDate: now,
-    dueDate: toDateString(addDays(now, 4)),
+    dueDate: toDateString(addDays(now, 8)),
     resolved: false,
     dispatch: jest.fn(),
     ...customProps

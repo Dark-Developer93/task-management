@@ -24,6 +24,8 @@ export const TaskItem = ({
   resolved,
   dispatch
 }) => {
+  // todo es: prompt reminder when time
+  reminderDate;
   return (
     <div className="col-12 col-md-4">
       <div
@@ -38,9 +40,9 @@ export const TaskItem = ({
           <h5 className="card-title">{name}</h5>
           <h6 className="card-subtitle mb-2 text-muted">Due on {dueDate}</h6>
           <p className="card-text">{description}</p>
-          <p className="card-text">Reminder {reminderDate}</p>
+          {/* {reminderDate ? <p className="card-text">Reminder on {reminderDate}</p> : null} */}
         </div>
-        <div className="card-footer">
+        <div className="card-footer text-center">
           <button
             className={classNames('btn btn-block', {
               'btn-primary': !resolved,
