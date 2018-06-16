@@ -8,7 +8,7 @@ import { getDaysFromNow } from '../util/DateUtil';
 
 const isAlmostDue = dueDate => {
   const daysBetween = getDaysFromNow(dueDate);
-  return daysBetween <= 3 && daysBetween >= 0;
+  return daysBetween <= 7 && daysBetween >= 0;
 };
 
 const isOverDue = dueDate => getDaysFromNow(dueDate) < 0;
