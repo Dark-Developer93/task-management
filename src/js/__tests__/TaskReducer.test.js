@@ -1,5 +1,5 @@
-import { ADD_TASK, RESOLVE_TASK } from '../constants/action-types';
-import taskReducer from '../reducers/tasks';
+import { ADD_TASK, TOGGLE_TASK } from '../constants/action-types';
+import tasks from '../reducers/tasks';
 
 jest.mock('uuid', () => {
   return {
@@ -7,28 +7,42 @@ jest.mock('uuid', () => {
   };
 });
 
+const now = Date.now();
+Date.now = jest.fn().mockReturnValue(now);
+
 describe('Task reducer', () => {
   it('should return initial state', () => {
-    expect(taskReducer(undefined, {})).toEqual([]);
+    expect(tasks(undefined, {})).toEqual([]);
   });
 
   it('should handle ADD_TASK', () => {
     expect(
-      taskReducer(undefined, {
+      tasks(undefined, {
         type: ADD_TASK,
         payload: {
           name: 'Do laundry'
         }
       })
-    ).toEqual([{ id: 1, name: 'Do laundry', resolved: false }]);
+    ).toEqual([
+      { id: 1, name: 'Do laundry', createdDate: now, resolved: false }
+    ]);
   });
 
-  it('should handle RESOLVE_TASK', () => {
+  it('should handle TOGGLE_TASK resolve', () => {
     expect(
-      taskReducer([{ id: 1, resolved: false }, { id: 2, resolved: false }], {
-        type: RESOLVE_TASK,
+      tasks([{ id: 1, resolved: false }], {
+        type: TOGGLE_TASK,
         payload: 1
       })
-    ).toEqual([{ id: 1, resolved: true }, { id: 2, resolved: false }]);
+    ).toEqual([{ id: 1, resolved: true }]);
+  });
+
+  it('should handle TOGGLE_TASK unresolved', () => {
+    expect(
+      tasks([{ id: 1, resolved: true }], {
+        type: TOGGLE_TASK,
+        payload: 1
+      })
+    ).toEqual([{ id: 1, resolved: false }]);
   });
 });

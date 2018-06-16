@@ -1,5 +1,5 @@
-import { ADD_TASK, RESOLVE_TASK } from '../constants/action-types';
-import { addTask, resolveTask } from '../actions/tasks';
+import { ADD_TASK, TOGGLE_TASK } from '../constants/action-types';
+import { addTask, toggleTask } from '../actions/tasks';
 
 describe('Task actions', () => {
   it('should add task', () => {
@@ -17,10 +17,10 @@ describe('Task actions', () => {
   it('should resolve task', () => {
     const taskId = 'T-123';
     const expectedAction = {
-      type: RESOLVE_TASK,
+      type: TOGGLE_TASK,
       payload: taskId
     };
 
-    expect(resolveTask(taskId)).toEqual(expectedAction);
+    expect(toggleTask(taskId)).toEqual(expectedAction);
   });
 });

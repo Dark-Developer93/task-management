@@ -1,3 +1,3 @@
 export const ADD_TASK = 'ADD_TASK';
 
-export const RESOLVE_TASK = 'RESOLVE_TASK';
+export const TOGGLE_TASK = 'TOGGLE_TASK';
