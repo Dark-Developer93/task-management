@@ -4,5 +4,6 @@ exports[`HomePage component should render correctly 1`] = `
 <img
   alt="Why task management?"
   src="test-file-stub"
+  width="100%"
 />
 `;
