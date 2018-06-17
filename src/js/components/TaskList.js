@@ -14,7 +14,7 @@ export class TaskList extends Component {
   render() {
     const { tasks } = this.props;
     return (
-      <section className="row">
+      <section className="row" id="taskList">
         {tasks.length > 0 ? (
           tasks.map((task, index) => (
             <TaskItem key={task.id} {...task} index={index} />

@@ -6,3 +6,18 @@
   content: ' *';
   color: red;
 }
+
+@media (min-width: 0) {
+  #taskList .col-12 {
+    margin-top: 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #taskList .col-12 {
+    margin-top: initial;
+  }
+  #taskList .col-md-4:nth-child(n + 4) {
+    margin-top: 1.25rem;
+  }
+}

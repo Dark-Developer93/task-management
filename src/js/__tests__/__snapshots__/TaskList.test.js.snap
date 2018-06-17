@@ -6,6 +6,7 @@ exports[`TaskList component should render empty state when tasks is empty 1`] = 
 >
   <section
     className="row"
+    id="taskList"
   >
     <div
       className="col-12"
@@ -40,6 +41,7 @@ exports[`TaskList component should render tasks 1`] = `
 >
   <section
     className="row"
+    id="taskList"
   >
     <TaskItem
       category="Cat A"
