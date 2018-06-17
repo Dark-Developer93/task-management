@@ -7,7 +7,7 @@ import { getDaysFromNow } from '../util/DateUtil';
 
 export class ReportPage extends Component {
   componentDidMount() {
-    const data = this.groupTaskByCategory();
+    const data = this.getTasksByCategory();
     new Chart(this.canvasEl, {
       type: 'doughnut',
       data: {
@@ -33,35 +33,28 @@ export class ReportPage extends Component {
 
   getTaskCategories() {
     const { tasks } = this.props;
-    return tasks
-      .reduce((accumulator, value) => {
-        if (accumulator.indexOf(value.category) < 0) {
-          accumulator.push(value.category);
-        }
-        return accumulator;
-      }, [])
-      .sort();
+    return [...new Set(tasks.map(task => task.category))].sort();
   }
 
-  groupTaskByCategory() {
+  getTasksByCategory() {
     const { tasks } = this.props;
     const taskCategories = this.getTaskCategories();
     return tasks.reduce((accumulator, task) => {
-      if (!task.resolved) {
-        const taskDueDateFromNow = getDaysFromNow(task.dueDate);
-        if (taskDueDateFromNow <= 7) {
-          const categoryIndex = taskCategories.indexOf(task.category);
-          accumulator[categoryIndex] = ++accumulator[categoryIndex] || 1;
-        }
+      if (!task.resolved && this.isAlmostDue(task.dueDate)) {
+        // update category count
+        const categoryIndex = taskCategories.indexOf(task.category);
+        accumulator[categoryIndex] = ++accumulator[categoryIndex] || 1;
       }
       return accumulator;
     }, []);
   }
 
+  isAlmostDue(dueDate) {
+    return getDaysFromNow(dueDate) <= 7;
+  }
+
   render() {
-    return (
-      <canvas ref={el => (this.canvasEl = el)} />
-    );
+    return <canvas ref={el => (this.canvasEl = el)} />;
   }
 }
 
