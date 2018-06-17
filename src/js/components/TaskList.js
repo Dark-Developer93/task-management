@@ -15,9 +15,17 @@ export class TaskList extends Component {
     const { tasks } = this.props;
     return (
       <section className="row">
-        {tasks.map((task, index) => (
-          <TaskItem key={task.id} {...task} index={index} />
-        ))}
+        {tasks.length > 0 ? (
+          tasks.map((task, index) => (
+            <TaskItem key={task.id} {...task} index={index} />
+          ))
+        ) : (
+          <div className="col-12">
+            <div className="alert alert-info" role="alert">
+              Task list is empty, please add a task!
+            </div>
+          </div>
+        )}
       </section>
     );
   }
