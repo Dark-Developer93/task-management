@@ -18,4 +18,10 @@ describe('Date util', () => {
   it('should convert date to date string format of YYYY-MM-DD', () => {
     expect(dateUtil.toDateString('2018-01-01')).toEqual('2018-01-01');
   });
+
+  it('should return empty string if date is undefined', () => {
+    expect(dateUtil.toDateString(undefined)).toEqual('');
+    expect(dateUtil.toDateString(null)).toEqual('');
+    expect(dateUtil.toDateString('')).toEqual('');
+  });
 });
