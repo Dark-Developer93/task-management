@@ -59,7 +59,7 @@ exports[`TaskForm component should render correctly 1`] = `
             <input
               className="form-control"
               id="dueDate"
-              min="2018-06-16"
+              min="2018-01-01"
               onChange={[Function]}
               required={true}
               type="date"
@@ -77,7 +77,7 @@ exports[`TaskForm component should render correctly 1`] = `
             <input
               className="form-control"
               id="reminderDate"
-              min="2018-06-16"
+              min="2018-01-01"
               onChange={[Function]}
               type="date"
               value=""

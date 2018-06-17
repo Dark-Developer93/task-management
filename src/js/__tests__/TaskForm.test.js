@@ -3,6 +3,8 @@ import { mount } from 'enzyme';
 
 import { TaskForm } from '../components/TaskForm';
 
+Date.now = jest.fn().mockReturnValue('2018-01-01');
+
 const setup = () => {
   const props = {
     addTask: jest.fn()
