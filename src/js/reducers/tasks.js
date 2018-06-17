@@ -2,6 +2,7 @@ import { v4 as uuid } from 'uuid';
 
 import { ADD_TASK, TOGGLE_TASK } from '../constants/action-types';
 import { toDateString } from '../util/DateUtil';
+import mockTasks from '../../data/mock-tasks.json';
 
 const createTask = task => {
   return {
@@ -26,7 +27,7 @@ const toggleTask = (task, taskId) => {
   return task;
 };
 
-const tasksReducer = (state = [], action) => {
+const tasksReducer = (state = [...mockTasks], action) => {
   switch (action.type) {
     case ADD_TASK:
       return [...state, createTask(action.payload)];

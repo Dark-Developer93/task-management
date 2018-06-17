@@ -7,6 +7,10 @@ jest.mock('uuid', () => {
   };
 });
 
+jest.mock('../../data/mock-tasks.json', () => {
+  return [];
+});
+
 const now = '2018-01-01';
 Date.now = jest.fn().mockReturnValue(now);
 
