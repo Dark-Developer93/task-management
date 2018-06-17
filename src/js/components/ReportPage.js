@@ -7,16 +7,25 @@ import { getDaysFromNow } from '../util/DateUtil';
 
 export class ReportPage extends Component {
   componentDidMount() {
+    const labels = this.getTaskCategories();
     const data = this.getTasksByCategory();
+    const colors = [
+      '#E0E0E0',
+      '#FFC400',
+      '#00E676',
+      '#FF6384',
+      ...this.getRandomColors(data.length - 4)
+    ];
+
     new Chart(this.canvasEl, {
       type: 'doughnut',
       data: {
-        labels: this.getTaskCategories(),
+        labels: labels,
         datasets: [
           {
             data,
-            backgroundColor: ['#E0E0E0', '#FFC400', '#00E676', '#FF6384'],
-            hoverBackgroundColor: ['#E0E0E0', '#FFC400', '#00E676', '#FF6384']
+            backgroundColor: colors,
+            hoverBackgroundColor: colors
           }
         ]
       },
@@ -29,6 +38,18 @@ export class ReportPage extends Component {
         animateRotate: true
       }
     });
+  }
+
+  getRandomColor() {
+    return Math.floor(Math.random() * 16777215).toString(16);
+  }
+
+  getRandomColors(count = 0) {
+    const colors = [];
+    while (count-- > 0) {
+      colors.push(`#${this.getRandomColor()}`);
+    }
+    return colors;
   }
 
   getTaskCategories() {
